@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}À propos & Services — August Mpunga{% endblock %}
+
+{% block content %}
+<section class="py-20 bg-slate-950">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-white mb-2">Mes Domaines d'Expertise</h2>
+            <div class="w-12 h-1 bg-blue-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <!-- GRILLE DE COMPÉTENCES CORRIGÉE -->
+        <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <!-- Data Analyst -->
+            <div class="p-6 bg-slate-900/40 border border-slate-800/50 rounded-2xl">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4">
+                    <i class="fa-solid fa-chart-pie text-lg"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Data Analyst</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">Traitement de données complexes, requêtage statistique de bases de données et conception de rapports visuels décisionnels dynamiques.</p>
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold uppercase text-slate-300">
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">SPSS</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">SQL</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Python</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Power BI</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Excel (VBA)</span>
+                </div>
+            </div>
+
+            <!-- Développeur Fullstack -->
+            <div class="p-6 bg-slate-900/40 border border-slate-800/50 rounded-2xl">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4">
+                    <i class="fa-solid fa-code text-lg"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Développeur Web Fullstack</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">Architecture d'applications web robustes et modulaires sous Flask et intégrations de designs modernes adaptatifs.</p>
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold uppercase text-slate-300">
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Python (Flask)</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">HTML / CSS</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Tailwind CSS</span>
+                </div>
+            </div>
+
+            <!-- Support IT (Modifié pour enlever Windows Server et l'administration serveur) -->
+            <div class="p-6 bg-slate-900/40 border border-slate-800/50 rounded-2xl">
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
+                    <i class="fa-solid fa-laptop-medical text-lg"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Support IT & Infrastructures</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">Maintenance préventive/curative du parc informatique, assistance et support utilisateur complet, gestion des équipements matériels et logiciels d'entreprise.</p>
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold uppercase text-slate-300">
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Support IT</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Hardware & PC</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Linux</span>
+                </div>
+            </div>
+
+            <!-- Réseaux (Modifié pour enlever le WAN et mettre en avant le LAN, Câblage, Switching et Cisco) -->
+            <div class="p-6 bg-slate-900/40 border border-slate-800/50 rounded-2xl">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-4">
+                    <i class="fa-solid fa-network-wired text-lg"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Réseaux</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">Configuration d'architectures réseaux locaux (LAN), déploiement du câblage structuré, routage et commutation (switching) sur équipements Cisco.</p>
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold uppercase text-slate-300">
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Cisco / LAN</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Switching & Routing</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Câblage</span>
+                </div>
+            </div>
+
+            <!-- Sécurité Électronique HikVision -->
+            <div class="p-6 bg-slate-900/40 border border-slate-800/50 rounded-2xl sm:col-span-2">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 mb-4">
+                    <i class="fa-solid fa-video text-lg"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Sécurité Électronique HikVision</h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-4">Installation et configuration complète de systèmes de vidéosurveillance avancés (analogique/IP) et déploiement de terminaux de contrôle d'accès réseaux.</p>
+                <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold uppercase text-slate-300">
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Vidéosurveillance CCTV</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Contrôle d'accès</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">HikVision</span>
+                    <span class="px-2 py-0.5 bg-slate-800 rounded">Configuration IP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIMELINE PARCOURS -->
+        <div class="max-w-3xl mx-auto mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-white mb-2">Mon Parcours</h2>
+                <div class="w-12 h-1 bg-blue-500 mx-auto rounded-full"></div>
+            </div>
+            <div class="relative border-l border-slate-800 pl-6 ml-4 space-y-12">
+                <!-- Profil Pro Indépendant (Modifié pour enlever la maintenance de serveurs) -->
+                <div class="relative">
+                    <div class="absolute w-3 h-3 bg-blue-500 rounded-full -left-[32px] top-1.5"></div>
+                    <h3 class="text-lg font-bold text-white">Informaticien Multitâche & Consultant</h3>
+                    <p class="text-xs text-slate-500 mb-2">Kinshasa, RDC — Prestations Indépendantes</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">Audit et traitement statistique de données sous SPSS, SQL et Python, déploiement réseau et terrain de solutions de sécurité électronique HikVision.</p>
+                </div>
+                <!-- Diplôme ISPT-KIN -->
+                <div class="relative">
+                    <div class="absolute w-3 h-3 bg-slate-700 rounded-full -left-[32px] top-1.5"></div>
+                    <h3 class="text-lg font-bold text-white">Licence en Sciences Informatiques</h3>
+                    <p class="text-xs text-blue-400 mb-2">Institut Supérieur Pédagogique et Technique de Kinshasa (ISPT-KIN)</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">Formation universitaire approfondie axée sur le développement logiciel, l'administration réseau et la modélisation des structures de données complexes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

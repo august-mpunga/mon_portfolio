@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}August Mpunga — Portfolio Professionnel{% endblock %}</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVIGATION DESKTOP -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <a href="{{ url_for('index') }}" class="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 hover:opacity-80 transition-opacity">
+                AUGUST.DEV
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+                <a href="{{ url_for('index') }}" class="hover:text-blue-400 transition-colors">Accueil</a>
+                <a href="{{ url_for('services') }}" class="hover:text-blue-400 transition-colors">À propos & Services</a>
+                <a href="{{ url_for('stock') }}" class="hover:text-blue-400 transition-colors">Logiciel Stock</a>
+                <a href="{{ url_for('contact') }}" class="px-4 py-2 bg-slate-900 text-slate-200 border border-slate-800 rounded-full hover:bg-slate-800 hover:text-white transition-all shadow-sm">Me contacter</a>
+            </nav>
+
+            <button id="open-btn" class="text-slate-400 hover:text-white focus:outline-none md:hidden transition-colors cursor-pointer" aria-label="Ouvrir le menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+            
+        </div>
+    </header>
+
+    <!-- MENU LATÉRAL MOBILE MODIFIÉ -->
+    <div id="mobile-menu" class="fixed top-0 left-0 bottom-0 z-50 w-[75%] max-w-[300px] bg-slate-950/95 backdrop-blur-lg transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-6 border-r border-slate-900 shadow-2xl shadow-black/50">
+        <div>
+            <!-- Zone d'en-tête du menu mobile avec Logo + Bouton Fermer -->
+            <div class="flex items-center justify-between mb-10 pb-4 border-b border-slate-900">
+                <a href="{{ url_for('index') }}" class="text-lg font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                    AUGUST.DEV
+                </a>
+                <button id="close-btn" class="text-slate-400 hover:text-white focus:outline-none cursor-pointer p-1">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Liens de Navigation verticaux -->
+            <nav class="flex flex-col gap-5 text-base font-medium">
+                <a href="{{ url_for('index') }}" class="text-slate-300 hover:text-blue-400 transition-colors py-2 border-b border-slate-900">Accueil</a>
+                <a href="{{ url_for('services') }}" class="text-slate-300 hover:text-blue-400 transition-colors py-2 border-b border-slate-900">À propos & Services</a>
+                <a href="{{ url_for('stock') }}" class="text-slate-300 hover:text-blue-400 transition-colors py-2 border-b border-slate-900 block w-full">Logiciel Gestion de Stock</a>
+                <a href="{{ url_for('contact') }}" class="mt-4 block text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-xl transition-all shadow-md shadow-blue-600/10">Me contacter</a>
+            </nav>
+        </div>
+
+        <div class="text-center text-xs text-slate-600">
+            &copy; 2026 August MPUNGA
+        </div>
+    </div>
+
+    <!-- CONTENU DYNAMIQUE -->
+    <main class="flex-grow pt-20">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-900/60 bg-slate-950 py-12">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+            
+            <div class="flex items-center gap-3.5 text-slate-400 order-1 sm:order-2">
+                <a href="https://wa.me/243825386628" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-green-400 hover:border-slate-700 transition-all" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/augustin-mpunga-ba18a1252?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-blue-400 hover:border-slate-700 transition-all" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in text-sm"></i>
+                </a>
+                <a href="https://x.com/augusthbr?s=21" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-white hover:border-slate-700 transition-all" aria-label="X (Twitter)">
+                    <i class="fa-brands fa-x-twitter text-sm"></i>
+                </a>
+                <a href="https://www.instagram.com/augustmpunga?igsh=MWxnM3lkZDBrdTFnOA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-pink-400 hover:border-slate-700 transition-all" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1FwbZExQHm/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-blue-600 hover:border-slate-700 transition-all" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f text-sm"></i>
+                </a>
+            </div>
+
+            <div class="text-xs text-slate-500 text-center sm:text-left order-2 sm:order-1">
+                &copy; 2026 August MPUNGA. Tous droits réservés.
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const openBtn = document.getElementById('open-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            openBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('-translate-x-full');
+            });
+
+            closeBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-x-full');
+            });
+        });
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

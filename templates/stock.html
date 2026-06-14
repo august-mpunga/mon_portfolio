@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Logiciel Gestion de Stock — August Mpunga{% endblock %}
+
+{% block content %}
+<section class="py-20 bg-slate-950">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">
+            Système Automatisé de Gestion de Stock & Ventes
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-12">
+            Découvrez l'interface et les fonctionnalités clés de notre solution métier développée sous Excel Advanced et VBA.
+        </p>
+
+        <!-- Grille de présentation des captures d'écran -->
+        <div class="grid md:grid-cols-2 gap-8 text-left mb-20">
+            
+            <!-- Carte 1 -->
+            <div class="bg-slate-900/50 border border-slate-900 rounded-2xl overflow-hidden p-4">
+                <img src="{{ url_for('static', filename='Projet.png') }}" alt="Tableau de bord" class="w-full h-auto rounded-xl object-cover mb-4 border border-slate-800/50">
+                <h3 class="text-lg font-bold text-white mb-2">Tableau de Bord Principal</h3>
+                <p class="text-sm text-slate-400">Interface d'accueil intuitive permettant de naviguer rapidement entre les ventes, les approvisionnements et l'état des stocks.</p>
+            </div>
+
+            <!-- Carte 2 -->
+            <div class="bg-slate-900/50 border border-slate-900 rounded-2xl overflow-hidden p-4">
+                <img src="{{ url_for('static', filename='Base.png') }}" alt="Base de données" class="w-full h-auto rounded-xl object-cover mb-4 border border-slate-800/50">
+                <h3 class="text-lg font-bold text-white mb-2">Gestion de la Base de Données</h3>
+                <p class="text-sm text-slate-400">Centralisation complète de vos références articles avec des automatisations VBA strictes pour éviter les doublons.</p>
+            </div>
+
+            <!-- Carte 3 -->
+            <div class="bg-slate-900/50 border border-slate-900 rounded-2xl overflow-hidden p-4">
+                <img src="{{ url_for('static', filename='Facture.png') }}" alt="Facturation" class="w-full h-auto rounded-xl object-cover mb-4 border border-slate-800/50">
+                <h3 class="text-lg font-bold text-white mb-2">Module de Facturation Automatisé</h3>
+                <p class="text-sm text-slate-400">Génération instantanée de factures prêtes à l'impression lors de la validation d'une vente, avec calcul automatique des totaux.</p>
+            </div>
+
+            <!-- Carte 4 -->
+            <div class="bg-slate-900/50 border border-slate-900 rounded-2xl overflow-hidden p-4">
+                <img src="{{ url_for('static', filename='Journal.png') }}" alt="Journal des ventes" class="w-full h-auto rounded-xl object-cover mb-4 border border-slate-800/50">
+                <h3 class="text-lg font-bold text-white mb-2">Journal Historique des Ventes</h3>
+                <p class="text-sm text-slate-400">Archivage sécurisé et chronologique de toutes les transactions pour une traçabilité financière et comptable irréprochable.</p>
+            </div>
+
+        </div>
+
+        <!-- SECTION : DOMAINES D'APPLICATION & APPEL À L'ACTION -->
+        <div class="border border-slate-900 bg-slate-900/30 rounded-3xl p-8 md:p-12 text-left backdrop-blur-sm max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                <i class="fa-solid fa-layer-group text-blue-400 text-xl"></i>
+                Champs d'application du logiciel
+            </h2>
+            <p class="text-slate-400 text-sm md:text-base mb-6 leading-relaxed">
+                Cette solution logicielle flexible et entièrement personnalisable a été pensée pour structurer l'activité commerciale des petites et moyennes entreprises. Elle s'adapte parfaitement aux exigences spécifiques de plusieurs secteurs clés :
+            </p>
+
+            <!-- Badges des domaines (Grille symétrique 2x2 sur mobile) -->
+            <div class="grid grid-cols-2 md:flex md:flex-wrap gap-3 mb-8 text-center">
+                <span class="px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-capsules text-red-400"></i> Pharmacies
+                </span>
+                <span class="px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-screwdriver-wrench text-orange-400"></i> Quincailleries
+                </span>
+                <span class="px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-bag-shopping text-pink-400"></i> Boutiques
+                </span>
+                <span class="px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-champagne-glasses text-amber-400"></i> Terrasses & Bars
+                </span>
+            </div>
+
+            <div class="border-t border-slate-900 pt-6">
+                <h3 class="text-lg font-bold text-white mb-2">Ce système vous intéresse ?</h3>
+                <p class="text-slate-400 text-sm mb-6">
+                    Que vous souhaitiez acquérir cette solution ou demander une démonstration sur-mesure adaptée à votre commerce, n'hésitez pas à me contacter directement via les réseaux sociaux affichés ci-dessous ou en m'envoyant un message depuis le formulaire dédié.
+                </p>
+                <div class="flex">
+                    <!-- Bouton épuré, sur une seule ligne et sans icône -->
+                    <a href="{{ url_for('contact') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-xl transition-all shadow-lg shadow-blue-600/20 whitespace-nowrap">
+                        Me contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
