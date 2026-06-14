@@ -3,8 +3,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mail import Mail, Message
 
 # CHARGEMENT DES VARIABLES D'ENVIRONNEMENT (Fichier .env)
-# On essaie de charger dotenv. Si ça échoue (en production sur Render), 
-# ce n'est pas grave car Render fournit déjà les variables.
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -13,20 +11,19 @@ except ImportError:
 
 app = Flask(__name__)
 
-# En production, on essaie de lire une clé secrète sécurisée, sinon on garde une valeur par défaut
-# La clé sera lue depuis ton fichier .env en local
+# Clé secrète récupérée depuis l'environnement ou valeur de secours
 app.secret_key = os.environ.get('SECRET_KEY', 'une_cle_secrete_de_secours_vba_excel_2026')
 
-# Configuration de Flask-Mail pour Gmail
+# Configuration robuste de Flask-Mail pour Gmail (SSL / Port 465)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'augustinmpunga30@gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 
-# SÉCURISATION : Le mot de passe est récupéré depuis ton fichier .env
-# (ou depuis les variables d'environnement de Render)
+# Récupération dynamique et sécurisée depuis Render ou le fichier .env local
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = 'augustinmpunga30@gmail.com'
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
 
 mail = Mail(app)
 
@@ -56,10 +53,10 @@ def contact():
         objet = request.form.get('subject')
         message_contenu = request.form.get('message')
         
-        # Construction de l'email
+        # Construction de l'email avec le destinataire défini dynamiquement
         msg = Message(
             subject=f"[Portfolio PRO] {objet}",
-            recipients=['augustinmpunga30@gmail.com'],
+            recipients=[os.environ.get('MAIL_USERNAME')],
             body=f"Tu as reçu un nouveau message depuis ton portfolio :\n\n"
                  f"Nom du client : {nom}\n"
                  f"Email du client : {email_client}\n"
@@ -79,6 +76,4 @@ def contact():
     return render_template('contact.html')
 
 if __name__ == '__main__':
-    # SÉCURISATION : En local sur ton PC, ça tourne en debug. 
-    # Sur le web, le serveur de production ignorera ce bloc.
     app.run(debug=True)
