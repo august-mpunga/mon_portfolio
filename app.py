@@ -1,10 +1,9 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mail import Mail, Message
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 # CHARGEMENT DES VARIABLES D'ENVIRONNEMENT (Fichier .env)
-# On essaie de charger dotenv. Si ça échoue (en production sur Render), 
-# ce n'est pas grave car Render fournit déjà les variables.
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -13,22 +12,8 @@ except ImportError:
 
 app = Flask(__name__)
 
-# En production, on essaie de lire une clé secrète sécurisée, sinon on garde une valeur par défaut
-# La clé sera lue depuis ton fichier .env en local
+# Clé secrète récupérée depuis l'environnement ou valeur de secours
 app.secret_key = os.environ.get('SECRET_KEY', 'une_cle_secrete_de_secours_vba_excel_2026')
-
-# Configuration de Flask-Mail pour Gmail
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'augustinmpunga30@gmail.com'
-
-# SÉCURISATION : Le mot de passe est récupéré depuis ton fichier .env
-# (ou depuis les variables d'environnement de Render)
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = 'augustinmpunga30@gmail.com'
-
-mail = Mail(app)
 
 # ----------------- ROUTES -----------------
 
@@ -56,29 +41,30 @@ def contact():
         objet = request.form.get('subject')
         message_contenu = request.form.get('message')
         
-        # Construction de l'email
-        msg = Message(
+        # Construction du message pour SendGrid
+        message = Mail(
+            from_email=os.environ.get('FROM_EMAIL'),
+            to_emails=os.environ.get('TO_EMAIL'),
             subject=f"[Portfolio PRO] {objet}",
-            recipients=['augustinmpunga30@gmail.com'],
-            body=f"Tu as reçu un nouveau message depuis ton portfolio :\n\n"
-                 f"Nom du client : {nom}\n"
-                 f"Email du client : {email_client}\n"
-                 f"Objet : {objet}\n\n"
-                 f"Message :\n{message_contenu}"
+            plain_text_content=f"Tu as reçu un nouveau message depuis ton portfolio :\n\n"
+                               f"Nom du client : {nom}\n"
+                               f"Email du client : {email_client}\n"
+                               f"Objet : {objet}\n\n"
+                               f"Message :\n{message_contenu}"
         )
         
         try:
-            mail.send(msg)
+            # Envoi via l'API HTTP (Passe à travers le pare-feu de Render)
+            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            sg.send(message)
             flash("Votre message a été transmis avec succès ! August vous répondra très rapidement.", "success")
         except Exception as e:
             flash("Une erreur est survenue lors de l'envoi. Veuillez réessayer ou utiliser les réseaux sociaux.", "error")
-            print(f"Erreur d'envoi : {e}")
+            print(f"Erreur d'envoi SendGrid : {e}")
             
         return redirect(url_for('contact'))
         
     return render_template('contact.html')
 
 if __name__ == '__main__':
-    # SÉCURISATION : En local sur ton PC, ça tourne en debug. 
-    # Sur le web, le serveur de production ignorera ce bloc.
     app.run(debug=True)
