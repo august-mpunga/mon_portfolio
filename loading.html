@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUGUST.DEV — Chargement</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b0f19; /* Même fond sombre que ton portfolio */
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .brand {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .brand span {
+            color: #3b82f6; /* Accent bleu comme ton site */
+        }
+
+        /* Petit spinner de chargement élégant */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #3b82f6;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .text {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #9ca3af;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="brand">AUGUST<span>.DEV</span></div>
+    <div class="spinner"></div>
+    <div class="text">Initialisation du service en cours...</div>
+
+</body>
+</html>
